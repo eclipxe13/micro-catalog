@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Eclipxe\MicroCatalog\Tests\Exceptions;
+namespace Eclipxe\MicroCatalog\Tests\Unit\Exceptions;
 
 use Eclipxe\MicroCatalog\Exceptions\IndexTypeError;
 use Eclipxe\MicroCatalog\Exceptions\MicroCatalogException;
