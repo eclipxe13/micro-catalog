@@ -10,6 +10,14 @@ In summary, [SemVer](https://semver.org/) can be viewed as `[ Breaking ].[ Featu
 
 **Version `0.x.x` doesn't have to apply any of the SemVer rules**
 
+## Version 0.1.1 2020-01-09
+
+- Update license year.
+- Update `psalm` to `level 1`.
+- Fix issues detected by `phpstan` and `psalm` recent versions.
+- Fix Scrutinizer-CI build.
+- Fix Travis-CI build, move from PHP `7.4snapshot` to `7.4`.
+
 ## Version 0.1.0 2019-09-30
 
 - Initial release
