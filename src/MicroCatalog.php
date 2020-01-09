@@ -22,17 +22,17 @@ abstract class MicroCatalog
      */
     public function __construct($index)
     {
-        $this->index = $index;
         if (! is_string($index) && ! is_int($index)) {
             throw new IndexTypeError(static::class, $index);
         }
+        $this->index = $index;
         $this->value = $this->getEntriesArray()[$this->index] ?? $this->getEntryValueOnUndefined();
     }
 
     /**
      * Override this function to setup the predefined values
      *
-     * @return array
+     * @return array<string, mixed>
      */
     abstract public static function getEntriesArray(): array;
 
@@ -49,6 +49,11 @@ abstract class MicroCatalog
         return ($this->getEntryValue() === $this->getEntryValueOnUndefined());
     }
 
+    /**
+     * @param string $name
+     * @param array<mixed> $arguments
+     * @return mixed
+     */
     public function __call(string $name, array $arguments)
     {
         if (strlen($name) > 2 && 0 === strcasecmp('is', substr($name, 0, 2))) {
@@ -87,6 +92,7 @@ abstract class MicroCatalog
      */
     protected function getEntryValueWithKey(string $key)
     {
+        /** @var mixed $value */
         $value = $this->getEntryValue();
         if (is_array($value)) {
             return $value[$key] ?? null;

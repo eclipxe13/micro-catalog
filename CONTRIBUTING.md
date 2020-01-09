@@ -64,11 +64,13 @@ When you do begin working on your feature, here are some guidelines to consider:
 This project uses different development tools to ensure code style, test and quality (using code analyzers).
 
 ```shell
-# install development direct dependences
+# install project direct dependences
 composer install
-# install development tools dependences
+
+# install development tools dependences (using composer script)
 composer dev:install
-# or run the installer script
+
+# install development tools dependences (using installer script)
 bash develop/install-development-tools
 ```
 
@@ -95,6 +97,7 @@ Before you can run these, be sure to `composer install` or `composer update`.
 # using composer
 composer dev:build
 
+# or using tools individually
 tools/phpcs -sp src/ tests/
 tools/php-cs-fixer fix -v --dry-run
 vendor/bin/phpunit --coverage-text
