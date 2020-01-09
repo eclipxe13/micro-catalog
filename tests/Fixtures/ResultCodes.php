@@ -15,6 +15,7 @@ use Eclipxe\MicroCatalog\MicroCatalog;
  */
 final class ResultCodes extends MicroCatalog
 {
+    /** @return array<int, string> */
     public static function getEntriesArray(): array
     {
         return [
