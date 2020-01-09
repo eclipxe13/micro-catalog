@@ -10,6 +10,10 @@ In summary, [SemVer](https://semver.org/) can be viewed as `[ Breaking ].[ Featu
 
 **Version `0.x.x` doesn't have to apply any of the SemVer rules**
 
+## Version UNRELEASED
+
+- Do not include in distribution package folder `/develop`
+
 ## Version 0.1.1 2020-01-09
 
 - Update license year.
