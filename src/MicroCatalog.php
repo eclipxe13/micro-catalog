@@ -32,7 +32,7 @@ abstract class MicroCatalog
     /**
      * Override this function to setup the predefined values
      *
-     * @return array<string, mixed>
+     * @return array<mixed>
      */
     abstract public static function getEntriesArray(): array;
 

@@ -12,6 +12,7 @@ In summary, [SemVer](https://semver.org/) can be viewed as `[ Breaking ].[ Featu
 
 ## Version UNRELEASED
 
+- Fix phpdoc on `MicroCatalog::getEntriesArray()`, the return type was defining key type but it shouldn't.
 - Do not include in distribution package folder `/develop`
 
 ## Version 0.1.1 2020-01-09
