@@ -19,7 +19,7 @@ You can find help and discussion in the following places:
 
 ## Reporting Bugs
 
-Bugs are tracked in our project's [issue tracker](https://github.com/eclipxe13/micro-catalog/issues).
+We track our bugs in our project's [issue tracker](https://github.com/eclipxe13/micro-catalog/issues).
 
 When submitting a bug report, please include enough information for us to reproduce the bug.
 A good bug report includes the following sections:
@@ -44,7 +44,7 @@ section below, you may create bugfix branches and send us pull requests.
 If you have an idea for a new feature, it's a good idea to check out our
 [issues](https://github.com/eclipxe13/micro-catalog/issues) or active
 [pull requests](https://github.com/eclipxe13/micro-catalog/pulls)
-first to see if the feature is already being worked on.
+first to see if we are being working on the feature.
 If not, feel free to submit an issue first, asking whether the feature is beneficial to the project.
 This will save you from doing a lot of development work only to have your feature rejected.
 We don't enjoy rejecting your hard work, but some features just don't fit with the goals of the project.
