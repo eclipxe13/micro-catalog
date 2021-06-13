@@ -101,7 +101,7 @@ composer dev:build
 tools/phpcs -sp
 tools/php-cs-fixer fix -v --dry-run
 vendor/bin/phpunit --coverage-text
-tools/phpstan analyze --level max src/ tests/
+tools/phpstan analyze
 tools/psalm
 phpdbg -qrr tools/infection --show-mutations
 ```

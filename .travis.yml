@@ -16,7 +16,7 @@ script:
   - tools/php-cs-fixer fix --dry-run --verbose
   - tools/phpcs --colors -sp
   - vendor/bin/phpunit --testdox --verbose
-  - tools/phpstan analyse --level max --no-progress --verbose src/ tests/
+  - tools/phpstan analyse --no-progress --verbose
   - tools/psalm --no-progress
   - phpdbg -qrr tools/infection --show-mutations || true
 
