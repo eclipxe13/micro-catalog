@@ -38,11 +38,11 @@
         "dev:build": ["@dev:fix-style", "@dev:test"],
         "dev:check-style": [
             "@php tools/php-cs-fixer fix --dry-run --verbose",
-            "@php tools/phpcs --colors -sp src/ tests/"
+            "@php tools/phpcs --colors -sp"
         ],
         "dev:fix-style": [
             "@php tools/php-cs-fixer fix --verbose",
-            "@php tools/phpcbf --colors -sp src/ tests/"
+            "@php tools/phpcbf --colors -sp"
         ],
         "dev:test": [
             "@dev:check-style",

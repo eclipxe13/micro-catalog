@@ -84,7 +84,7 @@ composer dev:fix-style
 
 # or using tools individually
 tools/php-cs-fixer fix -v
-tools/phpcbf -sp src/ tests/
+tools/phpcbf -sp
 ```
 
 ## Running Tests
@@ -98,7 +98,7 @@ Before you can run these, be sure to `composer install` or `composer update`.
 composer dev:build
 
 # or using tools individually
-tools/phpcs -sp src/ tests/
+tools/phpcs -sp
 tools/php-cs-fixer fix -v --dry-run
 vendor/bin/phpunit --coverage-text
 tools/phpstan analyze --level max src/ tests/
