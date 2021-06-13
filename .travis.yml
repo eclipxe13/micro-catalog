@@ -22,4 +22,4 @@ script:
 
 notifications:
   email:
-    if: branch = master
+    if: branch = main

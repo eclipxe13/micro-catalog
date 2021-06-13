@@ -32,11 +32,11 @@ The `get<Property>()` methods allow to get a *string key* from the *value array*
 
 See the following examples:
 
-- [`ResultCodes`](https://github.com/eclipxe13/micro-catalog/blob/master/tests/Fixtures/ResultCodes.php)
+- [`ResultCodes`](https://github.com/eclipxe13/micro-catalog/blob/main/tests/Fixtures/ResultCodes.php)
   Common usage with value as `scalar`, allows undefined properties.
-- [`ResultCodes`](https://github.com/eclipxe13/micro-catalog/blob/master/tests/Fixtures/ResultCodes.php)
+- [`ResultCodes`](https://github.com/eclipxe13/micro-catalog/blob/main/tests/Fixtures/ResultCodes.php)
   Common usage with value as `array`, get property, allows undefined properties.
-- [`ResultCodes`](https://github.com/eclipxe13/micro-catalog/blob/master/tests/Fixtures/ResultCodes.php)
+- [`ResultCodes`](https://github.com/eclipxe13/micro-catalog/blob/main/tests/Fixtures/ResultCodes.php)
   Common usage with value as `object`, get property, disable undefined properties.
 
 ### `MicroCatalog` example
@@ -157,22 +157,22 @@ and don't forget to take a look in the [TODO][] and [CHANGELOG][] files.
 The `eclipxe/micro-catalog` library is copyright © [Carlos C Soto](http://eclipxe.com.mx/)
 and licensed for use under the MIT License (MIT). Please see [LICENSE][] for more information.
 
-[contributing]: https://github.com/eclipxe13/micro-catalog/blob/master/CONTRIBUTING.md
-[changelog]: https://github.com/eclipxe13/micro-catalog/blob/master/docs/CHANGELOG.md
-[todo]: https://github.com/eclipxe13/micro-catalog/blob/master/docs/TODO.md
+[contributing]: https://github.com/eclipxe13/micro-catalog/blob/main/CONTRIBUTING.md
+[changelog]: https://github.com/eclipxe13/micro-catalog/blob/main/docs/CHANGELOG.md
+[todo]: https://github.com/eclipxe13/micro-catalog/blob/main/docs/TODO.md
 
 [source]: https://github.com/eclipxe13/micro-catalog
 [release]: https://github.com/eclipxe13/micro-catalog/releases
-[license]: https://github.com/eclipxe13/micro-catalog/blob/master/LICENSE
-[build]: https://travis-ci.com/eclipxe13/micro-catalog?branch=master
+[license]: https://github.com/eclipxe13/micro-catalog/blob/main/LICENSE
+[build]: https://travis-ci.com/eclipxe13/micro-catalog?branch=main
 [quality]: https://scrutinizer-ci.com/g/eclipxe13/micro-catalog/
-[coverage]: https://scrutinizer-ci.com/g/eclipxe13/micro-catalog/code-structure/master/code-coverage
+[coverage]: https://scrutinizer-ci.com/g/eclipxe13/micro-catalog/code-structure/main/code-coverage
 [downloads]: https://packagist.org/packages/eclipxe/micro-catalog
 
 [badge-source]: https://img.shields.io/badge/source-eclipxe/micro--catalog-blue?style=flat-square
 [badge-release]: https://img.shields.io/github/release/eclipxe13/micro-catalog?style=flat-square
 [badge-license]: https://img.shields.io/github/license/eclipxe13/micro-catalog?style=flat-square
-[badge-build]: https://img.shields.io/travis/com/eclipxe13/micro-catalog/master?style=flat-square
-[badge-quality]: https://img.shields.io/scrutinizer/g/eclipxe13/micro-catalog/master?style=flat-square
-[badge-coverage]: https://img.shields.io/scrutinizer/coverage/g/eclipxe13/micro-catalog/master?style=flat-square
+[badge-build]: https://img.shields.io/travis/com/eclipxe13/micro-catalog/main?style=flat-square
+[badge-quality]: https://img.shields.io/scrutinizer/g/eclipxe13/micro-catalog/main?style=flat-square
+[badge-coverage]: https://img.shields.io/scrutinizer/coverage/g/eclipxe13/micro-catalog/main?style=flat-square
 [badge-downloads]: https://img.shields.io/packagist/dt/eclipxe/micro-catalog?style=flat-square
