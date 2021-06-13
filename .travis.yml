@@ -1,7 +1,7 @@
 language: php
 
 # php compatibility
-php: ['7.2', '7.3', '7.4']
+php: ['7.2', '7.3', '7.4', '8.0']
 
 cache:
   - directories:
@@ -9,12 +9,12 @@ cache:
 
 before_script:
   - phpenv config-rm xdebug.ini || true
-  - travis_retry composer install --no-interaction --prefer-dist
+  - travis_retry composer upgrade --no-interaction --prefer-dist
   - travis_retry bash develop/install-development-tools
 
 script:
-  - tools/php-cs-fixer fix --verbose
-  - tools/phpcbf --colors -sp src/ tests/
+  - tools/php-cs-fixer fix --dry-run --verbose
+  - tools/phpcs --colors -sp src/ tests/
   - vendor/bin/phpunit --testdox --verbose
   - tools/phpstan analyse --level max --no-progress --verbose src/ tests/
   - tools/psalm --no-progress
