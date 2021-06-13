@@ -10,6 +10,10 @@ In summary, [SemVer](https://semver.org/) can be viewed as `[ Breaking ].[ Featu
 
 **Version `0.x.x` doesn't have to apply any of the SemVer rules**
 
+## Unreleased 2021-06-13
+
+Maintenance on development environment, didn't change any source inside `src/`.
+
 ## Version 0.1.2 2020-01-13
 
 - Fix phpdoc on `MicroCatalog::getEntriesArray()`, the return type was defining key type but it shouldn't.
