@@ -10,7 +10,7 @@
 
 > Micro catalog PHP template class, useful to create value objects based on a known small catalog.
 
-Several times I have the need for a catalog, by example, when receiving an result code and correlate to
+Several times I have the need for a catalog, by example, when receiving a result code and correlate to
 specific related values. This library helps me to resolve this common problem, and it may help you too.
 
 ## Installation
@@ -42,7 +42,9 @@ See the following examples:
 ### `MicroCatalog` example
 
 ```php
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 use Eclipxe\MicroCatalog\MicroCatalog;
 
@@ -66,7 +68,7 @@ final class ResultCodes extends MicroCatalog
 
     public function getEntryValueOnUndefined(): string
     {
-        return '';
+        return '#N/A';
     }
 
     public function getEntryId(): string
@@ -76,20 +78,21 @@ final class ResultCodes extends MicroCatalog
 }
 
 $warning = new ResultCodes(1);
-$warning->isWarning(); // true
-$warning->getEntryId(); // int(1)
-$warning->getEntryValue(); // string("Warning")
-$warning->isUndefined(); // false
+var_dump($warning->isWarning());        // bool(true)
+var_dump($warning->getEntryIndex());    // int(1)
+var_dump($warning->getEntryValue());    // string(7) "Warning"
+var_dump($warning->getEntryId());       // string(7) "Warning" (method was overriden)
+var_dump($warning->isUndefined());      // bool(false)
 
 $other = new ResultCodes(99);
-$other->isUndefined(); // true
-$other->getEntryId(); // int(99)
-$other->getEntryValue(); // string("")
+var_dump($other->isUndefined());        // bool(true)
+var_dump($other->getEntryIndex());      // int(99)
+var_dump($other->getEntryValue());      // string(4) "#N/A"
 ```
 
 ### Undefined entry
 
-When creating an instance of `MicroCatalog`, if the current key is not found in the list of known values
+When creating an instance of `MicroCatalog`, when the key isn't found in the list of known values
 it will use the value from `getValueOnUndefined()`.
 
 If you don't want to allow unknown instances you can override and throw an exception on `getValueOnUndefined()`.
@@ -98,13 +101,13 @@ If you don't want to allow unknown instances you can override and throw an excep
 
 Use the methods `is<name>()` to compare to specific value.
 
-It will work by default when the values are identified by strings, in example: `isFoo()`
+It will work by default when the indexes are strings, in example: `isFoo()`
 will evaluate if the current index is `foo` (with the first character as lower case).
 
 You can redefine whits behavior by overriding the `getEntryId(): string` function. So `isFoo()` will compare
 `foo` with the returned value of `getEntryId(): string`.
 
-You have to define this methods in your docblock to let your IDE or code analyzer detect what you are doing.
+You have to define these methods in your docblock to let your IDE or code analyzer detect what you are doing.
 
 ### Get a magic property
 
@@ -142,7 +145,7 @@ We adhere to [Semantic Versioning](https://semver.org/).
 We will not introduce any compatibility backwards change on major versions.
 
 Internal classes (using `@internal` annotation) are not part of this agreement
-as they must only exists inside this project. Do not use them in your project.
+as they must only exist inside this project. Do not use them in your project.
 
 ## Contributing
 
