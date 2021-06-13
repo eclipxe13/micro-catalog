@@ -34,9 +34,9 @@ See the following examples:
 
 - [`ResultCodes`](https://github.com/eclipxe13/micro-catalog/blob/main/tests/Fixtures/ResultCodes.php)
   Common usage with value as `scalar`, allows undefined properties.
-- [`ResultCodes`](https://github.com/eclipxe13/micro-catalog/blob/main/tests/Fixtures/ResultCodes.php)
+- [`ComplexArray`](https://github.com/eclipxe13/micro-catalog/blob/main/tests/Fixtures/ComplexArray.php)
   Common usage with value as `array`, get property, allows undefined properties.
-- [`ResultCodes`](https://github.com/eclipxe13/micro-catalog/blob/main/tests/Fixtures/ResultCodes.php)
+- [`ComplexObject`](https://github.com/eclipxe13/micro-catalog/blob/main/tests/Fixtures/ComplexObject.php)
   Common usage with value as `object`, get property, disable undefined properties.
 
 ### `MicroCatalog` example
