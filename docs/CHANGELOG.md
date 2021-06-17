@@ -10,6 +10,11 @@ In summary, [SemVer](https://semver.org/) can be viewed as `[ Breaking ].[ Featu
 
 **Version `0.x.x` doesn't have to apply any of the SemVer rules**
 
+## Unreleased 2021-06-17
+
+Migrate from Travis-CI to GitHub Actions. Thanks Travis-CI!
+Code coverage is build on GitHub and uploaded to Scrutinizer.
+
 ## Unreleased 2021-06-13
 
 Maintenance on development environment, didn't change any source inside `src/`.

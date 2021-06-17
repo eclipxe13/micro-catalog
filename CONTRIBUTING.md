@@ -54,7 +54,8 @@ When you do begin working on your feature, here are some guidelines to consider:
 * Your pull request description should clearly detail the changes you have made.
 * Follow our code style using `squizlabs/php_codesniffer` and `friendsofphp/php-cs-fixer`.
 * Please **write tests** for any new features you add.
-* Please **ensure that tests pass** before submitting your pull request. We have Travis CI automatically running tests for pull requests. However, running the tests locally will help save time.
+* Please **ensure that tests pass** before submitting your pull request. Running the tests locally will help save time.
+* We have GitHub Actions automatically running tests for pull requests.
 * **Use topic/feature branches.** Please do not ask us to pull from your main branch.
 * **Submit one feature per pull request.** If you have multiple features you wish to submit, please break them up into separate pull requests.
 * **Send coherent history**. Make sure each individual commit in your pull request is meaningful. If you had to make multiple intermediate commits while developing, please squash them before submitting.
@@ -104,4 +105,14 @@ vendor/bin/phpunit --testdox
 tools/phpstan analyze
 tools/psalm
 phpdbg -qrr tools/infection --show-mutations
+```
+
+## Running GitHub Actions locally
+
+You can use [`act`](https://github.com/nektos/act) to run your GitHub Actions locally.
+As documented in [`actions/setup-php-action`](https://github.com/marketplace/actions/setup-php-action#local-testing-setup)
+you will need to execute the command as:
+
+```shell
+act -P ubuntu-latest=shivammathur/node:latest
 ```

@@ -48,10 +48,14 @@
             "@dev:check-style",
             "@php vendor/bin/phpunit --testdox --verbose --stop-on-failure",
             "@php tools/phpstan analyse --no-progress",
-            "@php tools/psalm --no-progress"
+            "@php tools/psalm --no-progress",
+            "@dev:infection"
         ],
         "dev:coverage": [
-            "@php -dzend_extension=xdebug.so -dxdebug.mode=coverage vendor/bin/phpunit --testdox --coverage-html build/coverage/html/"
+            "@php -dzend_extension=xdebug.so -dxdebug.mode=coverage vendor/bin/phpunit --verbose --coverage-html build/coverage/html/"
+        ],
+        "dev:infection": [
+            "@php tools/infection --initial-tests-php-options='-dzend_extension=xdebug.so -dxdebug.mode=coverage' --show-mutations --no-progress"
         ]
     },
     "scripts-descriptions": {
@@ -60,6 +64,7 @@
         "dev:check-style": "DEV: search for code style errors using php-cs-fixer and phpcs",
         "dev:fix-style": "DEV: fix code style errors using php-cs-fixer and phpcbf",
         "dev:test": "DEV: run phplint, dev:check-style, phpunit, phpstan and psalm",
-        "dev:coverage": "DEV: run phpunit with xdebug and storage coverage in build/coverage/html/"
+        "dev:coverage": "DEV: run phpunit with xdebug and storage coverage in build/coverage/html/",
+        "dev:infection": "DEV: run mutation tests using infection"
     }
 }

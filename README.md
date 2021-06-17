@@ -164,7 +164,7 @@ and licensed for use under the MIT License (MIT). Please see [LICENSE][] for mor
 [source]: https://github.com/eclipxe13/micro-catalog
 [release]: https://github.com/eclipxe13/micro-catalog/releases
 [license]: https://github.com/eclipxe13/micro-catalog/blob/main/LICENSE
-[build]: https://travis-ci.com/eclipxe13/micro-catalog?branch=main
+[build]: https://github.com/eclipxe13/micro-catalog/actions/workflows/build.yml?query=branch:main
 [quality]: https://scrutinizer-ci.com/g/eclipxe13/micro-catalog/
 [coverage]: https://scrutinizer-ci.com/g/eclipxe13/micro-catalog/code-structure/main/code-coverage
 [downloads]: https://packagist.org/packages/eclipxe/micro-catalog
@@ -172,7 +172,7 @@ and licensed for use under the MIT License (MIT). Please see [LICENSE][] for mor
 [badge-source]: https://img.shields.io/badge/source-eclipxe/micro--catalog-blue?style=flat-square
 [badge-release]: https://img.shields.io/github/release/eclipxe13/micro-catalog?style=flat-square
 [badge-license]: https://img.shields.io/github/license/eclipxe13/micro-catalog?style=flat-square
-[badge-build]: https://img.shields.io/travis/com/eclipxe13/micro-catalog/main?style=flat-square
+[badge-build]: https://img.shields.io/github/workflow/status/eclipxe13/micro-catalog/build/main?style=flat-square
 [badge-quality]: https://img.shields.io/scrutinizer/g/eclipxe13/micro-catalog/main?style=flat-square
 [badge-coverage]: https://img.shields.io/scrutinizer/coverage/g/eclipxe13/micro-catalog/main?style=flat-square
 [badge-downloads]: https://img.shields.io/packagist/dt/eclipxe/micro-catalog?style=flat-square
