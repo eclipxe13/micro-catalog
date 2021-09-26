@@ -10,6 +10,22 @@ In summary, [SemVer](https://semver.org/) can be viewed as `[ Breaking ].[ Featu
 
 **Version `0.x.x` doesn't have to apply any of the SemVer rules**
 
+## Unreleased 2021-09-25
+
+Fixed CI. Infection fails because it is not working on PHP 7.4.
+PHPUnit cannot create code coverage for infection on PHP 8.0; so, upgrade to PHP 8.0 is not a solution.
+Install and run Infection throught Composer is the right workaround.
+
+Remove unused extensions on GitHub Actions.
+
+Move code coverage generation to Scrutinizer.
+
+## Unreleased 2021-06-18
+
+Fix description on `composer dev:build`.
+
+PHPUnit should not be verbose by default.
+
 ## Unreleased 2021-06-17
 
 Migrate from Travis-CI to GitHub Actions. Thanks Travis-CI!
@@ -21,7 +37,7 @@ Maintenance on development environment, didn't change any source inside `src/`.
 
 ## Version 0.1.2 2020-01-13
 
-- Fix phpdoc on `MicroCatalog::getEntriesArray()`, the return type was defining key type but it shouldn't.
+- Fix phpdoc on `MicroCatalog::getEntriesArray()`, the return type was defining key type, but it shouldn't.
 - Do not include in distribution package folder `/develop`
 
 ## Version 0.1.1 2020-01-09

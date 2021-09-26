@@ -116,7 +116,7 @@ If your known values array constains an array with string keys or a standard obj
 
 Even when PHP supports method with different case, this class use exact case, so `getSomething()` is different
 from `getSomeThing()`. The only transformation made to locate the key/property is to lower first char, then
-`getSomething()` will lookup for `something` into local value. Anyhow, you can override the method
+`getSomething()` will look up for `something` into local value. Anyhow, you can override the method
 `getEntryValueWithKey(string $key): mixed` to perform other transformation on key/property name.
 
 ### Extending

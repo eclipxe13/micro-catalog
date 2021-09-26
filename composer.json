@@ -63,7 +63,7 @@
         "dev:build": "DEV: run dev:fix-style dev:tests and dev:docs, run before pull request",
         "dev:check-style": "DEV: search for code style errors using php-cs-fixer and phpcs",
         "dev:fix-style": "DEV: fix code style errors using php-cs-fixer and phpcbf",
-        "dev:test": "DEV: run phplint, dev:check-style, phpunit, phpstan and psalm",
+        "dev:test": "DEV: run dev:fix-style, dev:check-style, phpunit, phpstan, psalm and infection",
         "dev:coverage": "DEV: run phpunit with xdebug and storage coverage in build/coverage/html/",
         "dev:infection": "DEV: run mutation tests using infection"
     }
