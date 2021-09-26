@@ -10,6 +10,18 @@ In summary, [SemVer](https://semver.org/) can be viewed as `[ Breaking ].[ Featu
 
 **Version `0.x.x` doesn't have to apply any of the SemVer rules**
 
+## Unreleased 2021-09-25
+
+Fixed CI. Infection fails because it is not working on PHP 7.4.
+PHPUnit cannot create code coverage for infection on PHP 8.0; so, upgrade to PHP 8.0 is not a solution.
+Install and run Infection throught Composer is the right workaround.
+
+## Unreleased 2021-06-18
+
+Fix description on `composer dev:build`.
+
+PHPUnit should not be verbose by default.
+
 ## Unreleased 2021-06-17
 
 Migrate from Travis-CI to GitHub Actions. Thanks Travis-CI!
