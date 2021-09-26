@@ -18,6 +18,8 @@ Install and run Infection throught Composer is the right workaround.
 
 Remove unused extensions on GitHub Actions.
 
+Move code coverage generation to Scrutinizer.
+
 ## Unreleased 2021-06-18
 
 Fix description on `composer dev:build`.
