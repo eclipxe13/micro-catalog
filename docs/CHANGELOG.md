@@ -16,6 +16,8 @@ Fixed CI. Infection fails because it is not working on PHP 7.4.
 PHPUnit cannot create code coverage for infection on PHP 8.0; so, upgrade to PHP 8.0 is not a solution.
 Install and run Infection throught Composer is the right workaround.
 
+Remove unused extensions on GitHub Actions.
+
 ## Unreleased 2021-06-18
 
 Fix description on `composer dev:build`.
