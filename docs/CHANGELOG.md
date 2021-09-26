@@ -37,7 +37,7 @@ Maintenance on development environment, didn't change any source inside `src/`.
 
 ## Version 0.1.2 2020-01-13
 
-- Fix phpdoc on `MicroCatalog::getEntriesArray()`, the return type was defining key type but it shouldn't.
+- Fix phpdoc on `MicroCatalog::getEntriesArray()`, the return type was defining key type, but it shouldn't.
 - Do not include in distribution package folder `/develop`
 
 ## Version 0.1.1 2020-01-09
