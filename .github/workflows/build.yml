@@ -8,9 +8,8 @@ on:
     - cron: '0 16 * * 0' # sunday 16:00
 
 jobs:
-
   phpcs:
-    name: PHP Code Sniffer
+    name: Coding standards (phpcs)
     runs-on: "ubuntu-latest"
     steps:
       - name: Checkout
@@ -24,11 +23,11 @@ jobs:
         env:
           fail-fast: true
 
-      - name: Code style (phpcs)
+      - name: Coding standards (phpcs)
         run: phpcs -q --report=checkstyle | cs2pr
 
   php-cs-fixer:
-    name: PHP Coding Standards Fixer
+    name: Coding standards (php-cs-fixer)
     runs-on: "ubuntu-latest"
     steps:
       - name: Checkout
@@ -36,17 +35,17 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2 # https://github.com/marketplace/actions/setup-php-action
         with:
-          php-version: '8.0' # cannot use php 8.0 because phpunit dependency
+          php-version: '8.0'
           coverage: none
           tools: composer:v2, cs2pr, php-cs-fixer
         env:
           fail-fast: true
 
-      - name: Code style (php-cs-fixer)
+      - name: Coding standards (php-cs-fixer)
         run: php-cs-fixer fix --dry-run --format=checkstyle | cs2pr
 
   phpunit:
-    name: PHPUnit on PHP ${{ matrix.php-versions }}
+    name: Tests on PHP ${{ matrix.php-versions }} (phpunit)
     runs-on: "ubuntu-latest"
     strategy:
       matrix:
@@ -77,11 +76,11 @@ jobs:
       - name: Install project dependencies
         run: composer upgrade --no-interaction --no-progress --prefer-dist
 
-      - name: Tests
+      - name: Tests (phpunit)
         run: vendor/bin/phpunit --testdox --verbose
 
   phpstan:
-    name: PHP Static Analysis Tool
+    name: Static analysis (phpstan)
     runs-on: "ubuntu-latest"
     steps:
       - name: Checkout
@@ -109,11 +108,11 @@ jobs:
       - name: Install project dependencies
         run: composer upgrade --no-interaction --no-progress --prefer-dist
 
-      - name: Code analysis (phpstan)
+      - name: Static analysis (phpstan)
         run: phpstan analyse --no-progress --verbose
 
   psalm:
-    name: Psalm
+    name: Static analysis (psalm)
     runs-on: "ubuntu-latest"
     steps:
       - name: Checkout
@@ -141,11 +140,11 @@ jobs:
       - name: Install project dependencies
         run: composer upgrade --no-interaction --no-progress --prefer-dist
 
-      - name: Code analysis (psalm)
+      - name: Static analysis (psalm)
         run: psalm --no-progress
 
   infection:
-    name: PHP Mutation Testing Framework
+    name: Mutation Testing (infection)
     runs-on: "ubuntu-latest"
     steps:
       - name: Checkout
