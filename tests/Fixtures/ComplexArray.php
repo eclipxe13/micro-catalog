@@ -16,7 +16,7 @@ use Eclipxe\MicroCatalog\MicroCatalog;
  */
 final class ComplexArray extends MicroCatalog
 {
-    /** @return array[] */
+    /** @return array<string, array{code: int, message: string}> */
     public static function getEntriesArray(): array
     {
         return [
@@ -26,7 +26,7 @@ final class ComplexArray extends MicroCatalog
         ];
     }
 
-    /** @return array<string, mixed> */
+    /** @return array{code: int, message: string} */
     public function getEntryValueOnUndefined(): array
     {
         return [
