@@ -10,6 +10,10 @@ In summary, [SemVer](https://semver.org/) can be viewed as `[ Breaking ].[ Featu
 
 **Version `0.x.x` doesn't have to apply any of the SemVer rules**
 
+## Unreleased 2021-11-20
+
+Fixed CI. New phpstan version complains about weak return types on example test classes.
+
 ## Unreleased 2021-09-25
 
 Fixed CI. Infection fails because it is not working on PHP 7.4.
