@@ -14,6 +14,7 @@ In summary, [SemVer](https://semver.org/) can be viewed as `[ Breaking ].[ Featu
 
 Project Maintenance:
 
+- CI: Fix PSalm configuration file.
 - Move from `develop/install-development-tools` to `phive`.
 - Update license year.
 - Update code style standard to PSR 12 and configuration files.
