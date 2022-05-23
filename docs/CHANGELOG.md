@@ -16,6 +16,7 @@ Project Maintenance:
 
 - Move from `develop/install-development-tools` to `phive`.
 - Update license year.
+- Update code style standard to PSR 12 and configuration files.
 
 ## Unreleased 2021-11-20
 
