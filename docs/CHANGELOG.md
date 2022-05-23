@@ -15,7 +15,7 @@ In summary, [SemVer](https://semver.org/) can be viewed as `[ Breaking ].[ Featu
 Project Maintenance:
 
 - Move from `develop/install-development-tools` to `phive`.
-- 
+- Update license year.
 
 ## Unreleased 2021-11-20
 
