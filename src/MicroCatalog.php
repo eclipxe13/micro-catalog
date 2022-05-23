@@ -7,22 +7,25 @@ namespace Eclipxe\MicroCatalog;
 use Eclipxe\MicroCatalog\Exceptions\BadMethodCallException;
 use Eclipxe\MicroCatalog\Exceptions\IndexTypeError;
 
+/**
+ * @template TEntry
+ */
 abstract class MicroCatalog
 {
     /** @var string|int */
     private $index;
 
-    /** @var mixed */
+    /** @var TEntry */
     private $value;
 
     /**
      * MicroCatalog constructor.
      *
-     * @param string|int|mixed $index
+     * @param string|int $index
      */
     public function __construct($index)
     {
-        if (! is_string($index) && ! is_int($index)) {
+        if (! is_string($index) && ! is_int($index)) { /** @phpstan-ignore-line */
             throw new IndexTypeError(static::class, $index);
         }
         $this->index = $index;
@@ -30,9 +33,9 @@ abstract class MicroCatalog
     }
 
     /**
-     * Override this function to setup the predefined values
+     * Override this function to set up the predefined values
      *
-     * @return array<mixed>
+     * @return array<TEntry>
      */
     abstract public static function getEntriesArray(): array;
 
@@ -40,7 +43,7 @@ abstract class MicroCatalog
      * Override this function to set a default value if the index is not found
      * You can even throw an exception to not allow an element without definition
      *
-     * @return mixed
+     * @return TEntry
      */
     abstract public function getEntryValueOnUndefined();
 
@@ -80,7 +83,7 @@ abstract class MicroCatalog
         return strval($this->index);
     }
 
-    /** @return mixed */
+    /** @return TEntry */
     public function getEntryValue()
     {
         return $this->value;
@@ -88,7 +91,7 @@ abstract class MicroCatalog
 
     /**
      * @param string $key
-     * @return mixed
+     * @return TEntry|null
      */
     protected function getEntryValueWithKey(string $key)
     {

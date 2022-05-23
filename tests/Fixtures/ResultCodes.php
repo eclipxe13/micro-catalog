@@ -12,6 +12,8 @@ use Eclipxe\MicroCatalog\MicroCatalog;
  * @method bool isOk()
  * @method bool isWarning()
  * @method bool isError()
+ *
+ * @extends MicroCatalog<string>
  */
 final class ResultCodes extends MicroCatalog
 {

@@ -32,9 +32,11 @@ class BasicTest extends TestCase
 
     public function testConstructWithNonStringOrInteger(): void
     {
+        $invalidIndex = (object)[];
+
         $this->expectException(IndexTypeError::class);
         $this->expectExceptionMessage(sprintf('Argument passed to %s must be integer or string', ResultCodes::class));
-        new ResultCodes((object) []);
+        new ResultCodes($invalidIndex); /** @phpstan-ignore-line */
     }
 
     public function testCallUndefinedMethod(): void

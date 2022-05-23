@@ -16,6 +16,8 @@ use OutOfRangeException;
  * @method string getGid()
  * @method bool isAdmin()
  * @method bool isUser()
+ *
+ * @extends MicroCatalog<object>
  */
 final class ComplexObject extends MicroCatalog
 {
@@ -33,7 +35,7 @@ final class ComplexObject extends MicroCatalog
         return parent::getEntryValueWithKey($key);
     }
 
-    public function getEntryValueOnUndefined(): void
+    public function getEntryValueOnUndefined()
     {
         throw new OutOfRangeException('The role is not defined');
     }
