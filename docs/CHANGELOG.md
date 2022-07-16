@@ -16,6 +16,8 @@ Add type template to `MicroCatalog<TEntry>`.
 
 Fix GitHub workflow by configure `infection/extension-installer` plugin.
 
+Fix Scrutinizer CI running on PHP 7.4 to allow code coverage creation.
+
 This release includes also the following previously unreleased changes.
 
 ### Unreleased 2022-05-23
