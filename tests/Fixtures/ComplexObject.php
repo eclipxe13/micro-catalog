@@ -35,7 +35,7 @@ final class ComplexObject extends MicroCatalog
         return parent::getEntryValueWithKey($key);
     }
 
-    public function getEntryValueOnUndefined()
+    public function getEntryValueOnUndefined(): object
     {
         throw new OutOfRangeException('The role is not defined');
     }
