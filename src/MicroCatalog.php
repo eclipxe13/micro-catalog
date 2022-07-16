@@ -25,7 +25,11 @@ abstract class MicroCatalog
      */
     public function __construct($index)
     {
-        if (! is_string($index) && ! is_int($index)) { /** @phpstan-ignore-line */
+        /**
+         * @psalm-suppress DocblockTypeContradiction
+         * @phpstan-ignore-next-line
+         */
+        if (! is_string($index) && ! is_int($index)) {
             throw new IndexTypeError(static::class, $index);
         }
         $this->index = $index;
@@ -95,14 +99,16 @@ abstract class MicroCatalog
      */
     protected function getEntryValueWithKey(string $key)
     {
+        $return = null;
         /** @var mixed $value */
         $value = $this->getEntryValue();
         if (is_array($value)) {
-            return $value[$key] ?? null;
+            /** @var TEntry $return */
+            $return = $value[$key] ?? null;
+        } elseif (is_object($value)) {
+            /** @var TEntry $return */
+            $return = $value->{$key} ?? null;
         }
-        if (is_object($value)) {
-            return $value->{$key} ?? null;
-        }
-        return null;
+        return $return;
     }
 }
