@@ -10,7 +10,7 @@ In summary, [SemVer](https://semver.org/) can be viewed as `[ Breaking ].[ Featu
 
 **Version `0.x.x` doesn't have to apply any of the SemVer rules**
 
-## Version 0.1.3 2022-07-15
+## Version 0.1.3 2022-07-18
 
 Add type template to `MicroCatalog<TEntry>`.
 
