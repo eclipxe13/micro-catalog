@@ -150,7 +150,7 @@ as they must only exist inside this project. Do not use them in your project.
 ## Contributing
 
 Contributions are welcome! Please read [CONTRIBUTING][] for details
-and don't forget to take a look in the [TODO][] and [CHANGELOG][] files.
+and don't forget to take a look in [TODO][] and [CHANGELOG][] files.
 
 ## Copyright and License
 

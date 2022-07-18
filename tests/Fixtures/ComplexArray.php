@@ -13,10 +13,11 @@ use Eclipxe\MicroCatalog\MicroCatalog;
  * @method bool isOk()
  * @method bool isDuplicated()
  * @method bool isNotFound()
+ *
+ * @extends MicroCatalog<array{code: int, message: string}>
  */
 final class ComplexArray extends MicroCatalog
 {
-    /** @return array<string, array{code: int, message: string}> */
     public static function getEntriesArray(): array
     {
         return [
@@ -26,7 +27,6 @@ final class ComplexArray extends MicroCatalog
         ];
     }
 
-    /** @return array{code: int, message: string} */
     public function getEntryValueOnUndefined(): array
     {
         return [
