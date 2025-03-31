@@ -30,6 +30,6 @@ class ComplexObjectTest extends TestCase
     public function testCallGetWhenKeyDoesNotExists(): void
     {
         $entry = new ComplexObject('User');
-        $this->assertNull($entry->{'getUndefinedMethod'}());
+        $this->assertNull($entry->{'getUndefinedMethod'}()); /** @phpstan-ignore method.notFound */
     }
 }

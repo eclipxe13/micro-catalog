@@ -48,12 +48,12 @@ class BasicTest extends TestCase
         $this->expectExceptionMessage(
             sprintf('Call to undefined method %s::undefinedMethod', ResultCodes::class)
         );
-        $code->{'undefinedMethod'}();
+        $code->{'undefinedMethod'}(); /** @phpstan-ignore method.notFound */
     }
 
     public function testCallGetWhenKeyDoesNotExists(): void
     {
         $entry = new ResultCodes(0);
-        $this->assertNull($entry->{'getUndefinedMethod'}());
+        $this->assertNull($entry->{'getUndefinedMethod'}()); /** @phpstan-ignore method.notFound */
     }
 }
