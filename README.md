@@ -1,6 +1,7 @@
 # `eclipxe/micro-catalog`
 
 [![Source Code][badge-source]][source]
+[![Packagist PHP Version Support][badge-php-version]][php-version]
 [![Latest Version][badge-release]][release]
 [![Software License][badge-license]][license]
 [![Build Status][badge-build]][build]
@@ -162,6 +163,7 @@ and licensed for use under the MIT License (MIT). Please see [LICENSE][] for mor
 [todo]: https://github.com/eclipxe13/micro-catalog/blob/main/docs/TODO.md
 
 [source]: https://github.com/eclipxe13/micro-catalog
+[php-version]: https://packagist.org/packages/eclipxe/micro-catalog
 [release]: https://github.com/eclipxe13/micro-catalog/releases
 [license]: https://github.com/eclipxe13/micro-catalog/blob/main/LICENSE
 [build]: https://github.com/eclipxe13/micro-catalog/actions/workflows/build.yml?query=branch:main
@@ -170,6 +172,7 @@ and licensed for use under the MIT License (MIT). Please see [LICENSE][] for mor
 [downloads]: https://packagist.org/packages/eclipxe/micro-catalog
 
 [badge-source]: https://img.shields.io/badge/source-eclipxe/micro--catalog-blue?style=flat-square
+[badge-php-version]: https://img.shields.io/packagist/php-v/eclipxe/micro-catalog?style=flat-square
 [badge-release]: https://img.shields.io/github/release/eclipxe13/micro-catalog?style=flat-square
 [badge-license]: https://img.shields.io/github/license/eclipxe13/micro-catalog?style=flat-square
 [badge-build]: https://img.shields.io/github/actions/workflow/status/eclipxe13/micro-catalog/build.yml?branch=main&style=flat-square
