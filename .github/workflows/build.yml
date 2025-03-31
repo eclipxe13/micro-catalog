@@ -1,5 +1,6 @@
 name: build
 on:
+  workflow_dispatch:
   pull_request:
     branches: [ "main" ]
   push:
@@ -7,20 +8,22 @@ on:
   schedule:
     - cron: '0 16 * * 0' # sunday 16:00
 
-# Actions:
-# shivammathur/setup-php@v2 # https://github.com/marketplace/actions/setup-php-action
+# Actions
+# shivammathur/setup-php@v2 https://github.com/marketplace/actions/setup-php-action
+# sudo-bot/action-scrutinizer@latest https://github.com/marketplace/actions/action-scrutinizer
 
 jobs:
+
   phpcs:
     name: Coding standards (phpcs)
     runs-on: "ubuntu-latest"
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1'
+          php-version: '8.3'
           coverage: none
           tools: cs2pr, phpcs
         env:
@@ -33,11 +36,11 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1'
+          php-version: '8.3'
           coverage: none
           tools: cs2pr, php-cs-fixer
         env:
@@ -45,56 +48,25 @@ jobs:
       - name: Coding standards (php-cs-fixer)
         run: php-cs-fixer fix --dry-run --format=checkstyle | cs2pr
 
-  phpunit:
-    name: Tests on PHP ${{ matrix.php-versions }} (phpunit)
-    runs-on: "ubuntu-latest"
-    strategy:
-      matrix:
-        php-versions: ['7.2', '7.3', '7.4', '8.0', '8.1']
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.php-versions }}
-          coverage: none
-          tools: composer:v2
-        env:
-          fail-fast: true
-      - name: Get composer cache directory
-        id: composer-cache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
-      - name: Cache dependencies
-        uses: actions/cache@v3
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
-          restore-keys: ${{ runner.os }}-composer-
-      - name: Install project dependencies
-        run: composer upgrade --no-interaction --no-progress --prefer-dist
-      - name: Tests (phpunit)
-        run: vendor/bin/phpunit --testdox --verbose
-
   phpstan:
     name: Static analysis (phpstan)
     runs-on: "ubuntu-latest"
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1'
+          php-version: '8.3'
           coverage: none
           tools: composer:v2, phpstan
         env:
           fail-fast: true
       - name: Get composer cache directory
         id: composer-cache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
       - name: Cache dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
@@ -109,56 +81,155 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1'
+          php-version: '8.3'
           coverage: none
           tools: composer:v2, psalm
         env:
           fail-fast: true
       - name: Get composer cache directory
         id: composer-cache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
       - name: Cache dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
           restore-keys: ${{ runner.os }}-composer-
       - name: Install project dependencies
         run: composer upgrade --no-interaction --no-progress --prefer-dist
+      - name: Psalm version
+        run: psalm --version
       - name: Static analysis (psalm)
         run: psalm --no-progress
 
-  infection:
-    name: Mutation Testing (infection)
+  tests:
+    name: Tests on PHP ${{ matrix.php-version }} (phpunit)
     runs-on: "ubuntu-latest"
+    strategy:
+      matrix:
+        php-version: ['7.2', '7.3', '7.4', '8.0', '8.1', '8.2', '8.3', '8.4']
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.4' # cannot use a greater php version because of phpunit version compatibility
+          php-version: ${{ matrix.php-version }}
+          coverage: none
+          tools: composer:v2
+        env:
+          fail-fast: true
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
+          restore-keys: ${{ runner.os }}-composer-
+      - name: Install project dependencies
+        run: composer upgrade --no-interaction --no-progress --prefer-dist
+      - name: Tests (phpunit)
+        run: vendor/bin/phpunit --testdox --verbose
+
+  code-coverage:
+    name: Create code coverage
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
           coverage: xdebug
           tools: composer:v2
         env:
           fail-fast: true
       - name: Get composer cache directory
         id: composer-cache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
       - name: Cache dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
           restore-keys: ${{ runner.os }}-composer-
       - name: Install project dependencies
-        run: composer upgrade --no-interaction --no-progress --prefer-dist
-      - name: Mutation testing (infection)
-        # run this way because infection phar is not working on php 7.4
         run: |
-          composer require --dev infection/infection --no-interaction --no-progress --prefer-dist
-          vendor/bin/infection --no-progress --no-interaction --show-mutations --logger-github
+          composer require 'php:>=8.3' --no-install
+          composer require phpunit/phpunit:^9 --dev --update-with-all-dependencies --no-install
+          composer upgrade --no-interaction --no-progress --prefer-dist
+      - name: Upgrade PHPUnit configuration file
+        run: |
+          vendor/bin/phpunit --migrate-configuration
+          sed -i -E 's/executionOrder=".*?"/executionOrder="default"/' phpunit.xml.dist
+      - name: Create code coverage
+        run: vendor/bin/phpunit --testdox --coverage-xml=build/coverage --coverage-clover=build/coverage/clover.xml --log-junit=build/coverage/junit.xml
+      - name: Store code coverage
+        uses: actions/upload-artifact@v4
+        with:
+          name: code-coverage
+          path: build/coverage
+
+  scrutinizer:
+    name: Upload code coverage
+    needs: code-coverage
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # required for sudo-bot/action-scrutinizer
+      - name: Obtain code coverage
+        uses: actions/download-artifact@v4
+        with:
+          name: code-coverage
+          path: build/coverage
+      - name: Upload code coverage to scrutinizer
+        if: ${{ !env.ACT }} # do not run if using nektos/act
+        uses: sudo-bot/action-scrutinizer@latest
+        with:
+          cli-args: "--format=php-clover build/coverage/clover.xml"
+
+  infection:
+    name: Mutation testing (infection)
+    needs: code-coverage
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          coverage: none
+          tools: composer:v2, infection
+        env:
+          fail-fast: true
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
+          restore-keys: ${{ runner.os }}-composer-
+      - name: Install project dependencies
+        run: |
+          composer require 'php:>=8.3' --no-install
+          composer require phpunit/phpunit:^9 --dev --update-with-all-dependencies --no-install
+          composer upgrade --no-interaction --no-progress --prefer-dist
+      - name: Obtain code coverage
+        uses: actions/download-artifact@v4
+        with:
+          name: code-coverage
+          path: build/coverage
+      - name: Mutation testing
+        run: infection --skip-initial-tests --coverage=build/coverage --no-progress --no-interaction --logger-github

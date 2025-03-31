@@ -63,12 +63,12 @@ abstract class MicroCatalog
      */
     public function __call(string $name, array $arguments)
     {
-        if (strlen($name) > 2 && 0 === strcasecmp('is', substr($name, 0, 2))) {
-            return (0 === strcasecmp(substr($name, 2), $this->getEntryId()));
+        if (strlen($name) > 2 && 0 === strcasecmp('is', (string) substr($name, 0, 2))) {
+            return (0 === strcasecmp((string) substr($name, 2), $this->getEntryId()));
         }
 
-        if (strlen($name) > 3 && 0 === strcasecmp('get', substr($name, 0, 3))) {
-            return $this->getEntryValueWithKey(lcfirst(substr($name, 3)));
+        if (strlen($name) > 3 && 0 === strcasecmp('get', (string) substr($name, 0, 3))) {
+            return $this->getEntryValueWithKey(lcfirst((string) substr($name, 3)));
         }
 
         throw new BadMethodCallException(static::class, $name);

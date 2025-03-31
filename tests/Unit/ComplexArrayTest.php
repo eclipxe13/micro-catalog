@@ -32,6 +32,6 @@ class ComplexArrayTest extends TestCase
     public function testCallGetWhenKeyDoesNotExists(): void
     {
         $entry = new ComplexArray('Ok');
-        $this->assertNull($entry->{'getUndefinedMethod'}());
+        $this->assertNull($entry->{'getUndefinedMethod'}()); /** @phpstan-ignore method.notFound */
     }
 }

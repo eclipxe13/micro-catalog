@@ -19,38 +19,42 @@ class MicroCatalogTest extends TestCase
     {
         $catalog = new ResultCodes(0);
         $this->expectException(BadMethodCallException::class);
-        $catalog->{'is'}();
+        $catalog->{'is'}(); /** @phpstan-ignore method.notFound */
     }
 
     public function testCallGetMethodThrowsException(): void
     {
         $catalog = new ResultCodes(0);
         $this->expectException(BadMethodCallException::class);
-        $catalog->{'get'}();
+        $catalog->{'get'}(); /** @phpstan-ignore method.notFound */
     }
 
     public function testCallIsMethodUsingUppercase(): void
     {
         $catalog = new ResultCodes(0);
         $this->assertTrue($catalog->isOk());
-        $this->assertTrue($catalog->{'ISOK'}());
+        $this->assertTrue($catalog->{'ISOK'}()); /** @phpstan-ignore method.notFound */
     }
 
     public function testCallGetMethodUsingValidCaseReturnsNotNull(): void
     {
         $catalog = new ComplexObject('User');
-        $this->assertNotNull($catalog->{'getName'}());
-        $this->assertNotNull($catalog->{'getname'}()); // ComplexObject traduces name to Name
-        $this->assertNotNull($catalog->{'GetName'}());
-        $this->assertNotNull($catalog->{'gEtName'}());
-        $this->assertNotNull($catalog->{'geTName'}());
+        $this->assertNotNull($catalog->{'getName'}()); /** @phpstan-ignore method.alreadyNarrowedType */
+        // ComplexObject traduces name to Name
+        $this->assertNotNull($catalog->{'getname'}()); /** @phpstan-ignore method.notFound */
+        $this->assertNotNull($catalog->{'GetName'}()); /** @phpstan-ignore method.notFound */
+        $this->assertNotNull($catalog->{'gEtName'}()); /** @phpstan-ignore method.notFound */
+        $this->assertNotNull($catalog->{'geTName'}()); /** @phpstan-ignore method.notFound */
     }
 
     public function testCallGetMethodUsingInvalidCaseReturnsNull(): void
     {
         $catalog = new ComplexObject('User');
-        $this->assertNull($catalog->{'GETNAME'}()); // NAME invalid
-        $this->assertNull($catalog->{'getNAME'}()); // NAME invalid
-        $this->assertNull($catalog->{'getNamE'}()); // NamE invalid
+        // Invalid because of NAME
+        $this->assertNull($catalog->{'GETNAME'}()); /** @phpstan-ignore method.notFound */
+        // Invalid because of NAME
+        $this->assertNull($catalog->{'getNAME'}()); /** @phpstan-ignore method.notFound */
+        // Invalid because of NamE
+        $this->assertNull($catalog->{'getNamE'}()); /** @phpstan-ignore method.notFound */
     }
 }

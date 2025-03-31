@@ -4,19 +4,11 @@ filter:
     - 'vendor/'
 
 build:
-  dependencies:
-    override:
-      - composer upgrade --no-interaction --prefer-dist
+  dependencies: { override: true }
   nodes:
     analysis: # see https://scrutinizer-ci.com/docs/tools/php/php-scrutinizer/
-      environment:
-        php:
-          version: 7.4
       project_setup: { override: true }
-      tests:
-        override:
-          - php-scrutinizer-run --enable-security-analysis
-          - command: php -dzend_extension=xdebug.so -dxdebug.mode=coverage vendor/bin/phpunit --verbose --testdox --coverage-clover=coverage.clover
-            coverage:
-              file: coverage.clover
-              format: clover
+      tests: { override: true }
+
+tools:
+  external_code_coverage: true
