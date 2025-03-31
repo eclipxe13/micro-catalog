@@ -10,6 +10,27 @@ In summary, [SemVer](https://semver.org/) can be viewed as `[ Breaking ].[ Featu
 
 **Version `0.x.x` doesn't have to apply any of the SemVer rules**
 
+## Version 0.1.4 2025-03-30
+
+Ensure compatibility with PHP versions 8.2, 8.3 & 8.4.
+
+Update license year.
+
+Development maintenance:
+
+- Ignore false positives reported by PHPStan.
+- Update code standards.
+- Update GutHub build workflow:
+  - Allow dispatch workflow manually.
+  - Use $GITHUB_OUTPUT instead of ::set-output.
+  - Run jobs using PHP 8.3.
+  - Add PHP versions 8.2, 8.3 & 8.4 to test matrix.
+  - Use `php-version` variable name instead of `php-versions`.
+  - Introduce job to create code coverage.
+  - Infection now uses created job coverage instead of create it.
+  - Upload code coverage to Scrutinizer.
+- Update development tools.
+
 ## Version 0.1.3 2022-07-18
 
 Add type template to `MicroCatalog<TEntry>`.
