@@ -162,7 +162,7 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
       - name: Install project dependencies
         run: |
-          composer require 'php:>=8.3' --no-install
+          composer require 'php:>=8.5' --no-install
           composer require phpunit/phpunit:^9 --dev --update-with-all-dependencies --no-install
           composer upgrade --no-interaction --no-progress --prefer-dist
       - name: Upgrade PHPUnit configuration file
@@ -223,7 +223,7 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
       - name: Install project dependencies
         run: |
-          composer require 'php:>=8.3' --no-install
+          composer require 'php:>=8.4' --no-install
           composer require phpunit/phpunit:^9 --dev --update-with-all-dependencies --no-install
           composer upgrade --no-interaction --no-progress --prefer-dist
       - name: Obtain code coverage
