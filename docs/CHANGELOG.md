@@ -10,6 +10,21 @@ In summary, [SemVer](https://semver.org/) can be viewed as `[ Breaking ].[ Featu
 
 **Version `0.x.x` doesn't have to apply any of the SemVer rules**
 
+## Version 0.1.5 2026-03-17
+
+Ensure compatibility with PHP 8.5.
+
+Update license year.
+
+Development maintenance:
+
+- Remove deprecated `phpcs` rule `Generic.Functions.CallTimePassByReference`.
+- Update GutHub build workflow:
+  - Run jobs using PHP 8.5.
+  - Run *infection* job using PHP 8.4 due incompatibility.
+  - Add PHP versions 8.5 to test matrix.
+- Update development tools.
+
 ## Version 0.1.4 2025-03-30
 
 Ensure compatibility with PHP versions 8.2, 8.3 & 8.4.
